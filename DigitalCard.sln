@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalCard.Api", "DigitalCard.Api\DigitalCard.Api.csproj", "{88AC4A71-BA7F-4DBF-B66B-2FE2E9D7CEB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIgitalCard.Lib", "DIgitalCard.Lib\DIgitalCard.Lib.csproj", "{F1AC6DF0-D823-4F4C-8739-ADCEDFE7D4F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88AC4A71-BA7F-4DBF-B66B-2FE2E9D7CEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88AC4A71-BA7F-4DBF-B66B-2FE2E9D7CEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88AC4A71-BA7F-4DBF-B66B-2FE2E9D7CEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88AC4A71-BA7F-4DBF-B66B-2FE2E9D7CEB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1AC6DF0-D823-4F4C-8739-ADCEDFE7D4F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1AC6DF0-D823-4F4C-8739-ADCEDFE7D4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1AC6DF0-D823-4F4C-8739-ADCEDFE7D4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1AC6DF0-D823-4F4C-8739-ADCEDFE7D4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35E806F7-B866-49D4-AEC2-97815225CA61}
+	EndGlobalSection
+EndGlobal
