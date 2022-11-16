@@ -1,19 +1,18 @@
+using DigitalCard.Api.Data;
 using DigitalCard.Api.Middleware;
 using DigitalCard.Api.Services;
 using DIgitalCard.Lib.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using static DigitalCard.Api.Data.DBContext;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddTransient<ICardService, CardService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSwaggerGen(swagger =>
 {

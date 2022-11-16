@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DigitalCard.Api.Migrations
 {
-    [DbContext(typeof(DBContext.ApplicationDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20221115202820_InitialMigrtion")]
     partial class InitialMigrtion
     {

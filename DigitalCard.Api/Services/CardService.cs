@@ -14,6 +14,8 @@ namespace DigitalCard.Api.Services
         Response<List<CardDTO>> GetCustomerCards(int CustomerId);
         Response<int> RequestCardStatusUpdate(RequestCardStatusUpdate requestCardStatusUpdate);
         Response<int> ValidateRequest(OTPValidation oTPValidation);
+
+        Response<List<CardDTO>> GetAllCustomerCards();
     }
 
     public class CardService : ICardService
@@ -69,9 +71,26 @@ namespace DigitalCard.Api.Services
             };
         }
 
+        
+
         public Response<List<CardDTO>> GetCustomerCards(int CustomerId)
         {
             List<Card> customerCards = _context.Cards.Where(x => x.CustomerId == CustomerId).ToList();
+            foreach (var item in customerCards)
+            {
+                item.PAN = _encryptionHelper.AESDecrypt(item.PAN);
+            }
+            return new Response<List<CardDTO>>
+            {
+                Data = _mapper.Map<List<CardDTO>>(customerCards),
+                Message = "sucessful",
+                Succeeded = true
+            };
+        }
+
+        public Response<List<CardDTO>> GetAllCustomerCards()
+        {
+            List<Card> customerCards = _context.Cards.ToList();
             foreach (var item in customerCards)
             {
                 item.PAN = _encryptionHelper.AESDecrypt(item.PAN);

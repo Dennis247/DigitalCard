@@ -31,6 +31,13 @@ namespace DigitalCard.Api.Controllers
             return Ok(response);
         }
 
+        [HttpGet("GetAllCustomerCards")]
+        public IActionResult GetAllCustomerCards()
+        {
+            var response = _cardService.GetAllCustomerCards();
+            return Ok(response);
+        }
+
 
         [HttpPost("RequestCardStatusUpdate")]
         public IActionResult RequestCardStatusUpdate(RequestCardStatusUpdate requestCardStatusUpdate)

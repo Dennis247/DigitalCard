@@ -26,7 +26,14 @@ namespace DigitalCard.Api.Controllers
 
 
         [HttpPost("LoginCustomer")]
-        public IActionResult AddCustomer(LoginCustomerDto loginCustomerDto)
+        public IActionResult LoginCustomer(LoginCustomerDto loginCustomerDto)
+        {
+            var response = _customerService.LoginCustomer(loginCustomerDto);
+            return Ok(response);
+        }
+
+        [HttpPost("LoginCustomer")]
+        public IActionResult LoginCustomer(LoginCustomerDto loginCustomerDto)
         {
             var response = _customerService.LoginCustomer(loginCustomerDto);
             return Ok(response);
