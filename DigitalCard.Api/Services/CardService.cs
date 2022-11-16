@@ -45,7 +45,7 @@ namespace DigitalCard.Api.Services
 
         public Response<int> AddCardForCustomer(AddCardForCustomerDTO addCardForCustomerDTO)
         {
-            var existingCustomer = _context.Customers.SingleOrDefault(x => x.Id == addCardForCustomerDTO.CustomerId);
+            var existingCustomer = _context.Customers.SingleOrDefault(x => x.Email == addCardForCustomerDTO.Email);
             if (existingCustomer == null)
                 throw new KeyNotFoundException("Customer Not Found");
 
@@ -56,7 +56,10 @@ namespace DigitalCard.Api.Services
                 DateCreated = DateTime.UtcNow,
                 ExpiryDate = "10/27",
                 IsActive = false,
-                PAN = generateRandomPan()
+                PAN = generateRandomPan(),
+                CardStatus = DIgitalCard.Lib.Enums.CardStatus.ActivateCard,
+                CardName = existingCustomer.FirstName + " "+existingCustomer.LastName
+
 
             };
 

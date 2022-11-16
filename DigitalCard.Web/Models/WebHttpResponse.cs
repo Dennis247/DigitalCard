@@ -1,4 +1,6 @@
-﻿namespace DigitalCard.Web.Models
+﻿using System.Net;
+
+namespace DigitalCard.Web.Models
 {
     public class WebHttpResponse
     {

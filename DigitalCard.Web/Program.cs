@@ -1,5 +1,6 @@
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
+using DIgitalCard.Lib.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -11,7 +11,7 @@ namespace DIgitalCard.Lib.DTO
     public class AddCardForCustomerDTO
     {
         [Required]
-        public int CustomerId { get; set; }
+        public string Email { get; set; }
     }
 
 
@@ -39,6 +39,7 @@ namespace DIgitalCard.Lib.DTO
         public string CCV { get; set; }
         public bool IsActive { get; set; }
         public DateTime DateCreated { get; set; }
-
+        public CardStatus CardStatus { get; set; }
+        public string CardName { get; set; }
     }
 }

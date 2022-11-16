@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AddCardForCustomerDTO
 @{
+    ViewData["Title"] = "Add Customer";
 }
+
+     <div class="container-fluid">
+               <div class="row">
+                     <div class="col-sm-12 col-lg-6">
+          
+                     <div class="iq-card">
+                                 <div class="iq-card-header d-flex justify-content-between">
+                                    <div class="iq-header-title">
+                                       <h4 class="card-title">Add Customer</h4>
+                                    </div>
+                                 </div>
+                                 <div class="iq-card-body">
+                                    <form method="post" action="AddBlog"> 
+            
+                                       <div class=" row align-items-center">
+                                          <div class="form-group col-sm-9">
+                                             <label for="fname">Email:</label>
+                                             <input type="text" class="form-control" id="Title" value="@Model.Email" required name="Email">
+                                          </div>
+                                         
+                                      
+                                     
+                                       </div>
+                                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                       <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                                    </form>
+                                 </div>
+                              </div>
+                     </div>
+                  
+                  </div>
+             
+               </div>
+            
