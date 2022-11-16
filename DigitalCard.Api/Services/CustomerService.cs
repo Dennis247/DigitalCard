@@ -47,7 +47,16 @@ namespace DigitalCard.Api.Services
             {
                 throw new AppException("Customer Already Exist");
             }
-            Customer customerToAdd = _mapper.Map<Customer>(addCustomerDTO);
+
+
+            Customer customerToAdd = new Customer
+            {
+                DateAdded = DateTime.Now,
+                Email = addCustomerDTO.Email,
+                FirstName = addCustomerDTO.FirstName,
+                LastName = addCustomerDTO.LastName,
+            };
+
             _context.Customers.Add(customerToAdd);
             _context.SaveChanges();
 

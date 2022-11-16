@@ -128,8 +128,9 @@ namespace DigitalCard.Api.Services
                 OTP = generateRandomToken()
             };
 
-            sendVerifictionToken(existingCustomer.Email, cardStatusRequest.OTP);
+          
 
+            sendVerifictionToken(existingCustomer.Email, cardStatusRequest.OTP);
             _context.CardStatusRequests.Add(cardStatusRequest);
             _context.SaveChanges();
             return new Response<int>
@@ -160,29 +161,20 @@ namespace DigitalCard.Api.Services
             if (cardStatusRequest == null)
                 throw new AppException("Request not valid");
 
-            if (DateTime.Now.Subtract(cardStatusRequest.RequestDate).TotalMinutes <= 5)
+            if (DateTime.Now.Subtract(cardStatusRequest.RequestDate).TotalMinutes >= 5)
                 throw new AppException("OTP has expired, please try again");
 
             cardStatusRequest.IsRequestCompleted = true;
             cardStatusRequest.DateCompleted = DateTime.Now;
+            existingCard.CardStatus = cardStatusRequest.CardStatus;
 
             _context.CardStatusRequests.Update(cardStatusRequest);
-
-            Card? cardToUpdate = _context.Cards.SingleOrDefault(c => c.Id == oTPValidation.CardId);
-            if (cardToUpdate == null)
-            {
-                throw new AppException("Card not found");
-            }
-
-
-            cardToUpdate.CardStatus = cardStatusRequest.CardStatus;
-
-            _context.Cards.Update(cardToUpdate);
+            _context.Cards.Update(existingCard);
             _context.SaveChanges();
 
             return new Response<int>
             {
-                Data = cardToUpdate.Id,
+                Data = existingCard.Id,
                 Message = "Sucessful",
                 Succeeded = true
             };
