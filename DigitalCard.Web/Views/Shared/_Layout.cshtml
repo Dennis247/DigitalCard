@@ -5,7 +5,7 @@
 @{
     Customer account = new Customer
     {
-        FirstName = "User",
+        FirstName = "Dennis",
         LastName = "",
         Email = "",
     };
@@ -26,7 +26,7 @@
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Blogs</title>
+      <title>Digita Card</title>
       <!-- Favicon -->
       <link rel="shortcut icon" href="images/favicon.ico" />
       <!-- Bootstrap CSS -->
@@ -54,7 +54,7 @@
          <div class="iq-sidebar-logo d-flex justify-content-between">
             <a href="#">
           @*  <img src="images/logo.gif" class="img-fluid" alt="">*@
-            <span>Blogs</span>
+            <span>Digital Cards</span>
             </a>
             <div class="iq-menu-bt align-self-center">
                <div class="wrapper-menu">
@@ -69,24 +69,10 @@
                   <ul id="iq-sidebar-toggle" class="iq-menu">
                      <li class="iq-menu-title"><i class="ri-separator"></i><span>welcome @account.FirstName</span></li>
                      <li>
-                        <a href="@Url.Action("Index","Blogs")"  ><i class="las la-home"></i><span>Home</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>                   
+                        <a href="@Url.Action("GetCardsForCustomer","Card")"  ><i class="las la-home"></i><span>Home</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>                   
                      </li>
 
             
-                          <li>
-                        <a href="@Url.Action("AddBlog","Blogs")"  ><i class="las la-file-alt"></i><span>Create Blogs</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>                   
-                       
-                     </li>
-
-                       <li>
-                        <a href="@Url.Action("UserBlogs","Blogs")"><i class="las la-file-alt"></i><span>My Blogs</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>                   
-                       
-                     </li>
-
-                    <li>
-                        <a href="@Url.Action("ImportBlogs","Blogs")" ><i class="ri-record-circle-line"></i><span>Import Blogs</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>                   
-                       
-                     </li>
                      
 
                      
@@ -100,13 +86,7 @@
                                  </div>
                      </li>
           
-                            }else{
-                             <li>
-                        <a href="@Url.Action("Login","Accounts")"  ><i class="ri-record-circle-line"></i><span>Login</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>                   
-                       
-                     </li>
-
-                        
+                     
                      
                  
 
@@ -127,7 +107,7 @@
                   <div class="top-logo">
                      <a href="index.html" class="logo">
                      <img src="images/logo.gif" class="img-fluid" alt="">
-                     <span>Blogs</span>
+                     <span>Digita Card</span>
                      </a>
                   </div>
                </div>
@@ -136,7 +116,7 @@
                   <nav aria-label="breadcrumb">
                      <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Home</li>
+                        <li class="breadcrumb-item active" aria-current="page"></li>
                      </ul>
                   </nav>
                </div>
@@ -161,7 +141,7 @@
                   </ul>
                </div>
                <div class="col-lg-6 text-right">
-                  Copyright 2020 <a href="#">Blogs</a> All Rights Reserved.
+                  Copyright 2020 <a href="#">Digita Card</a> All Rights Reserved.
                </div>
             </div>
          </div>

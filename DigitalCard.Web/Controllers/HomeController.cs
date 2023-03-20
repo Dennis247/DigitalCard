@@ -15,7 +15,7 @@ namespace DigitalCard.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("GetCardsForCustomer", "Card");
         }
 
         public IActionResult Privacy()

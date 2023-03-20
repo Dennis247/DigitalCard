@@ -41,5 +41,6 @@ namespace DIgitalCard.Lib.DTO
         public DateTime DateCreated { get; set; }
         public CardStatus CardStatus { get; set; }
         public string CardName { get; set; }
+
     }
 }

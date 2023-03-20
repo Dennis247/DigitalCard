@@ -28,25 +28,25 @@ namespace DigitalCard.Web.Controllers
         }
 
     
-        [HttpGet]
-        public IActionResult GetCardsForCustomer(int CustomerId)
-        {
-            string url = $"{_appSettings.ApiBaseUrl}/Cards/GetCustomerCards";
-            var dataResponse = _httpServices.Get(url);
-            var result = JsonConvert.DeserializeObject<Response<List<CardDTO>>>(dataResponse.Data);
-            if (dataResponse.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                return View(result.Data);
-            }
-            _notyf.Error(result.Message);
-            return RedirectToAction("GetCardsForCustomer");
-        }
+        //[HttpGet]
+        //public IActionResult GetCardsForCustomer(int CustomerId)
+        //{
+        //    string url = $"{_appSettings.ApiBaseUrl}/Cards/GetCustomerCards";
+        //    var dataResponse = _httpServices.Get(url);
+        //    var result = JsonConvert.DeserializeObject<Response<List<CardDTO>>>(dataResponse.Data);
+        //    if (dataResponse.StatusCode == System.Net.HttpStatusCode.OK)
+        //    {
+        //        return View(result.Data);
+        //    }
+        //    _notyf.Error(result.Message);
+        //    return RedirectToAction("GetCardsForCustomer");
+        //}
 
 
         [HttpGet]
         public IActionResult GetCardsForCustomer()
         {
-            string url = $"{_appSettings.ApiBaseUrl}/Cards/GetAllCustomerCards";
+            string url = $"{_appSettings.ApiBaseUrl}Cards/GetAllCustomerCards";
             var dataResponse = _httpServices.Get(url);
             var result = JsonConvert.DeserializeObject<Response<List<CardDTO>>>(dataResponse.Data);
             if (dataResponse.StatusCode == System.Net.HttpStatusCode.OK)
@@ -80,7 +80,7 @@ namespace DigitalCard.Web.Controllers
             string url = $"{_appSettings.ApiBaseUrl}/Cards/AddCardForCustomer";
             var payload = JsonConvert.SerializeObject(addCardForCustomerDTO);
             var dataResponse = _httpServices.Post(url, payload);
-            var addCardResult = JsonConvert.DeserializeObject<Response<int>>(dataResponse.Data);
+            var addCardResult = JsonConvert.DeserializeObject<Response<dynamic>>(dataResponse.Data);
             if (dataResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 _notyf.Success(addCardResult.Message);
@@ -101,13 +101,13 @@ namespace DigitalCard.Web.Controllers
                
             };
 
-            string url = $"{_appSettings.ApiBaseUrl}/Cards/RequestCardStatusUpdate";
+            string url = $"{_appSettings.ApiBaseUrl}Cards/RequestCardStatusUpdate";
             var payload = JsonConvert.SerializeObject(requestCardStatusUpdate);
             var dataResponse = _httpServices.Post(url, payload);
-            var requestSTatus = JsonConvert.DeserializeObject<Response<int>>(dataResponse.Data);
+            var requestSTatus = JsonConvert.DeserializeObject<Response<dynamic>>(dataResponse.Data);
             if (dataResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                _notyf.Success(requestSTatus.Message);
+                _notyf.Success(requestSTatus.Message,10);
                 return RedirectToAction("ValidateRequest",new { CardId = CardId, CustomerId  = CustomerId });
             }
             _notyf.Error(requestSTatus.Message);
@@ -133,10 +133,10 @@ namespace DigitalCard.Web.Controllers
         public IActionResult ValidateRequest(OTPValidation oTPValidation)
         {
          
-            string url = $"{_appSettings.ApiBaseUrl}/Cards/ValidateRequest";
+            string url = $"{_appSettings.ApiBaseUrl}Cards/ValidateRequest";
             var payload = JsonConvert.SerializeObject(oTPValidation);
             var dataResponse = _httpServices.Post(url, payload);
-            var requestSTatus = JsonConvert.DeserializeObject<Response<int>>(dataResponse.Data);
+            var requestSTatus = JsonConvert.DeserializeObject<Response<dynamic>>(dataResponse.Data);
             if (dataResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 _notyf.Success(requestSTatus.Message);

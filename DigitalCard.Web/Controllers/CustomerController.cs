@@ -44,7 +44,7 @@ namespace DigitalCard.Web.Controllers
             string url = $"{_appSettings.ApiBaseUrl}/Customers/AddCustomer";
             var payload = JsonConvert.SerializeObject(addCustomerDTO);
             var dataResponse = _httpServices.Post(url, payload);
-            var addCustomerResult = JsonConvert.DeserializeObject<Response<int>>(dataResponse.Data);
+            var addCustomerResult = JsonConvert.DeserializeObject<Response<dynamic>>(dataResponse.Data);
             if (dataResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 _notyf.Success(addCustomerResult.Message);

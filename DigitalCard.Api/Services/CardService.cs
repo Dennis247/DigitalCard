@@ -156,7 +156,7 @@ namespace DigitalCard.Api.Services
                 throw new KeyNotFoundException("Customer does not exist");
 
             CardStatusRequest? cardStatusRequest = _context.CardStatusRequests.FirstOrDefault(x => x.OTP == oTPValidation.OTP
-           && x.CardId == oTPValidation.CardId && x.CustomerId == oTPValidation.CustomerId);
+           && x.CardId == oTPValidation.CardId && x.CustomerId == oTPValidation.CustomerId && !x.IsRequestCompleted);
 
             if (cardStatusRequest == null)
                 throw new AppException("Request not valid");
@@ -210,13 +210,21 @@ namespace DigitalCard.Api.Services
             string message = $@"<p>Please enter the token to complete your request, the Token will be valid for 5 minutes:</p>
                             <p><b>{Token}</b></p>";
 
-            _emailService.SendEmailWithSendGrid(new Message
+            _emailService.SendEmailWithSMTP(new Message
             {
                 To = new List<string> { Email },
                 Subject = "Digital Card - Verification",
                 HtmlContent = $@"<h4>Verfification Token</h4>
                         {message}"
             });
+
+            //_emailService.SendEmailWithSendGrid(new Message
+            //{
+            //    To = new List<string> { Email },
+            //    Subject = "Digital Card - Verification",
+            //    HtmlContent = $@"<h4>Verfification Token</h4>
+            //            {message}"
+            //});
         }
     }
 }

@@ -9,7 +9,7 @@
                   <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Bootstrap Datatables</h4>
+                              <h4 class="card-title">My Cards</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
@@ -33,17 +33,27 @@
                                <td>@item.CardName</td>
                                <td>@item.PAN</td>
                                <td>@item.DateCreated.ToLongDateString()</td>
-                               <td>@item.CardStatus.ToString()</td>
+                               @if(item.CardStatus == DIgitalCard.Lib.Enums.CardStatus.DeActivateCard)
+                                        {
+                                            
+                                                  <td>DeActivated</td>
+                                               
+                                        }
+                                        else
+                                        {
+                                             <td>Activated</td>
+                                        }
+                             
 
                                         @if(item.CardStatus == DIgitalCard.Lib.Enums.CardStatus.DeActivateCard)
                                         {
                                              <td>
-                                                 <a href="@Url.Action("RequestUpdateForCardStatus", new{cardStatus = DIgitalCard.Lib.Enums.CardStatus.ActivateCard,CardId = item.Id,CustomerId = item.CustomerId})" class="btn iq-bg-danger btn-rounded btn-sm my-0">Deactivate Card</a>
+                                                 <a href="@Url.Action("RequestUpdateForCardStatus", new{cardStatus = DIgitalCard.Lib.Enums.CardStatus.ActivateCard,CardId = item.Id,CustomerId = item.CustomerId})" class="btn iq-bg-success btn-rounded btn-sm my-0">Activate Card</a>
                                                  </td>
                                         }
                                         else
                                         {
-                                             <td><a href="@Url.Action("RequestUpdateForCardStatus", new{cardStatus = DIgitalCard.Lib.Enums.CardStatus.DeActivateCard,CardId = item.Id,CustomerId = item.CustomerId})" class="btn iq-bg-success btn-rounded btn-sm my-0">Activate Card</a></td>
+                                             <td><a href="@Url.Action("RequestUpdateForCardStatus", new{cardStatus = DIgitalCard.Lib.Enums.CardStatus.DeActivateCard,CardId = item.Id,CustomerId = item.CustomerId})" class="btn iq-bg-danger btn-rounded btn-sm my-0">DeActivate Card</a></td>
                                         }
 
                            
